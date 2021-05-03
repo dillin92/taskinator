@@ -1,5 +1,13 @@
 var formEl = document.querySelector("#task-form");
 var tasksToDoEl = document.querySelector("#tasks-to-do");
+var taskDataObj = {
+  id: 1,
+  name: "Add localStorage persistence",
+  type: "Web",
+  status: "in progress"
+}
+
+var tasks = [];
 
 var taskFormHandler = function(event) {
   event.preventDefault();
@@ -14,7 +22,8 @@ var taskFormHandler = function(event) {
   // package up data as an object
   var taskDataObj = {
       name: taskNameInput,
-      type: taskTypeInput
+      type: taskTypeInput,
+      status: "to do"
   };
 
   // send it as an argument to createTaskEl
@@ -32,6 +41,8 @@ var createTaskEl = function (taskDataObj) {
   taskInfoEl.innerHTML = "<h3 class='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
   listItemEl.appendChild(taskInfoEl);
 
+  console.log(taskDataObj);
+  console.log(taskDataObj.status);
   // add entire list item to list
   tasksToDoEl.appendChild(listItemEl);
 
